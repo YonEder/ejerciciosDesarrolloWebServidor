@@ -68,6 +68,50 @@
             return $suma / $cantidad;
         }
 
+        public function obtenerCorredorCarreraMasRapida()
+        {
+            $corredorRapido = null;
+            $tiempoRapido = PHP_FLOAT_MAX;
+
+            foreach($this->corredores as $corredor)
+                {
+                    foreach($corredor->getCarrera as $tiempo)
+                        {
+                            if($tiempo < $tiempoRapido)
+                                {
+                                    $tiempoRapido = $tiempo;
+                                    $corredorRapido = $corredor;
+                                }
+                        }
+                }
+
+                return $corredorRapido;
+        }
+
+        public function obtenerCorredorMasDe15Segundos()
+        {
+            $resultado = [];
+
+            foreach($this->corredores as $corredor)
+                {
+                    $cantidad = 0;
+                }
+
+            foreach($corredor->getCarreras() as $tiempo)
+                {
+                    if($this->tiempo > 15)
+                        {
+                            $cantidad++;
+                        }
+                }
+
+            if($cantidad > 2)
+                {
+                    $resultado = $corredor->getNombre();
+                }
+
+                return $resultado;
+        }
 
         
     }
