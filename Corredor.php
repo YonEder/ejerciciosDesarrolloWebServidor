@@ -14,11 +14,11 @@
         public $codigo;
         public $carreras = [];
 
-        public function __construct($nombre, $codigo, $carreras)
+        public function __construct($nombre, $codigo)
         {
             $this->nombre = $nombre;
             $this->codigo = $codigo;
-            $this->carreras = $carreras;
+            $this->carreras = [];
         }
 
         public function getNombre()
@@ -51,14 +51,14 @@
             $this->carreas = $carreras;
         }
 
-        public function anadirCarreras($timepo)
+        public function anadirCarrera($tiempo)
         {
             if($tiempo < 5)
                 {
                     throw new Exception("La carrera no puede durarar menos de 5 segundos.");
                 }
 
-            if(count($this->carreras) >=5)
+            if(count($this->carreras) >= 5)
                 {
                     throw new Exception("El corredor ya ha hecho 5 carreras.");
                 }

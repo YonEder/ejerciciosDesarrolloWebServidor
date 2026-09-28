@@ -14,9 +14,9 @@
     {
         public $corredores = [];
 
-        public function __construct($corredores)
+        public function __construct()
         {
-            $this->corredores = $corredores;
+            $this->corredores = [];
         }
 
         public function getCorredores()
@@ -41,7 +41,7 @@
                 throw new Exception("No existe ningun corredor con el codigo $codigo");
             }
 
-            $this->corredores[$codigo] = anadirCarrera($tiempo); 
+            $this->corredores[$codigo]->anadirCarrera($tiempo); 
         }
 
         public function calcularMediaPrimerCarrera()

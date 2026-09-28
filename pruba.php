@@ -9,7 +9,7 @@
     <?php
     
     require_once "Competicion.php";
-    require_once "Corerdor.php";
+    require_once "Corredor.php";
 
     $competicion = new Competicion();
 
@@ -34,11 +34,31 @@
             $codigo = $i;
             $numeroCarreras = random_int(1, 5);
             $tiempo = random_int(5, 30);
-            $corredor = new Corredor($nombre, $codigo, $numero);
+            $corredor = new Corredor($nombre, $codigo, $numeroCarreras);
+            $competicion->anadirCorredor($corredor);
 
             $competicion->anadirCorredor($corredor);
-            $competicion->añadirCarreraACorredor($codigo, $tiempo);
+            $competicion->anadirCarreraACorreores($codigo, $tiempo);
         }
+
+        $corredores = $competicion->getCorredores();    
+
+        for($i = 0; $i < count($corredores); $i++)
+            {
+                $corredor = $corredores[$i];
+
+                echo "<strong>";
+                echo $corredor->getNombre() . " | Codigo:". $corredor->getCodigo() . " | Numero de Carreras: " ;
+                echo "</strong><br>";
+
+                echo "Carreras: ";
+
+            $carreras = $corredor->getCarreras();
+
+            for ($j = 0; $j < count($carreras); $j++) {
+                echo $carreras[$j] . " segundos ";
+            }
+            }
     
     ?>
     
