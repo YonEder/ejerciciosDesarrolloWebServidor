@@ -113,6 +113,23 @@
                 return $resultado;
         }
 
+        public function obtenerCorredoresNombreTerminaEnE()
+        {
+            $resultado = [];
+
+            foreach($this->corredores as $corredor)
+                {
+                    $nombre = $corredor->getNombre();
+
+                    if(str_ends_with(strtolower($nombre), "e"))
+                        {
+                            $resultado[] = $corredor;
+                        }
+                }
+
+                return $resultado;
+        }
+
         
     }
 
