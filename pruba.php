@@ -43,22 +43,22 @@
 
         $corredores = $competicion->getCorredores();    
 
-        for($i = 0; $i < count($corredores); $i++)
-            {
-                $corredor = $corredores[$i];
+        echo "<h2>Corredores</h2>";
 
-                echo "<strong>";
-                echo $corredor->getNombre() . " | Codigo:". $corredor->getCodigo() . " | Numero de Carreras: " ;
-                echo "</strong><br>";
+        foreach ($competicion->getCorredores() as $corredor) {
+            echo "<strong>";
+            echo $corredor->getNombre();
+            echo " (" . $corredor->getCodigo() . ")";
+            echo "</strong><br>";
 
-                echo "Carreras: ";
+            echo "Carreras: ";
 
-            $carreras = $corredor->getCarreras();
-
-            for ($j = 0; $j < count($carreras); $j++) {
-                echo $carreras[$j] . " segundos ";
+            foreach ($corredor->getCarreras() as $tiempo) {
+                echo $tiempo . " segundos ";
             }
-            }
+
+            echo "<br><br>";
+        }
     
     ?>
     
