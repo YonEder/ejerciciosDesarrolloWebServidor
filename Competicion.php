@@ -44,7 +44,7 @@
             $this->corredores[$codigo]->anadirCarrera($tiempo); 
         }
 
-        public function calcularMediaPrimerCarrera()
+        public function calcularMediaPrimeraCarrera()
         {
             $suma = 0;
             $cantidad = 0;
@@ -75,7 +75,7 @@
 
             foreach($this->corredores as $corredor)
                 {
-                    foreach($corredor->getCarrera as $tiempo)
+                    foreach($corredor->getCarreras() as $tiempo)
                         {
                             if($tiempo < $tiempoRapido)
                                 {
@@ -99,7 +99,7 @@
 
             foreach($corredor->getCarreras() as $tiempo)
                 {
-                    if($this->tiempo > 15)
+                    if($tiempo > 15)
                         {
                             $cantidad++;
                         }

@@ -59,6 +59,50 @@
 
             echo "<br><br>";
         }
+
+                // Tiempo medio de la primera carrera
+                $media = $competicion->calcularMediaPrimeraCarrera();
+
+                echo "<h2>Resultados</h2>";
+
+                echo "Tiempo medio de la primera carrera: " . number_format($media, 2) . " segundos<br>";
+
+
+                // Corredor con la carrera más rápida
+                $corredorRapido = $competicion->obtenerCorredorCarreraMasRapida();
+
+                if ($corredorRapido !== null) {
+                    $tiempoRapido = min($corredorRapido->getCarreras());
+
+                    echo "Corredor con la carrera más rápida: " . $corredorRapido->getNombre() . " (" . $tiempoRapido . " segundos)<br>";
+                }
+
+        //Corredores con más de 15 segundos en más de 2 carreras
+        $corredoresMas15 = $competicion->obtenerCorredorMasDe15Segundos();
+
+        echo "Corredores con tiempos de más de 15 segundos en más de 2 carreras:<br>";
+
+        if (count($corredoresMas15) > 0) {
+            foreach ($corredoresMas15 as $nombre) {
+                echo "- " . $nombre . "<br>";
+            }
+        } else {
+            echo "Ninguno<br>";
+        }
+
+
+        //Corredores cuyo nombre termina en "e"
+        $corredoresTerminanE = $competicion->obtenerCorredoresNombreTerminaEnE();
+
+        echo "Corredores que su nombre termina en 'e':<br>";
+
+        if (count($corredoresTerminanE) > 0) {
+            foreach ($corredoresTerminanE as $corredor) {
+                echo "- " . $corredor->getNombre() . "<br>";
+            }
+        } else {
+            echo "Ninguno<br>";
+        }
     
     ?>
     
